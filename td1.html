@@ -1,0 +1,388 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=iso-8859-15">
+	<TITLE>Python TD1</TITLE>
+</HEAD>
+<BODY LANG="fr-FR" DIR="LTR">
+	<H1>IMAC - Python TD1</H1>
+	<BR>
+<H2>Prise en main du langage<BR><BR>
+</H2>
+<P><BR>Dans chaque paragraphe, il y a quelques lignes de code.<BR>
+
+Copiez-les <i>une par une</i> dans l'interpr&eacute;teur Python pour
+observer leur effet.<BR> 
+
+Essayez des variantes. <BR>
+
+Ces exemples vont vous permettre de vous
+familiariser tr&egrave;s vite avec le langage. <BR>
+
+Rappel : on acc&egrave;de aux attributs d'un objet avec <tt>dir(...)</tt>
+et &agrave; l'aide en ligne avec <tt>help(...)</tt><BR>
+
+Apr&egrave;s
+chaque paragraphe, il y a des petits exercices li&eacute;s aux
+concepts pr&eacute;sent&eacute;s. 
+</P>
+<H3>Tour d'horizon rapide</H3>
+<P><BR>On lance l'interpr&eacute;teur en tapant &quot;python&quot;.<BR>
+On obtient un prompt <TT>&gt;&gt;&gt;</TT>. <BR>
+On tape les instructions
+directement, il n'y a pas besoin de mettre un point virgule &agrave;
+la fin des lignes.</P>
+<H3>Entiers et cha&icirc;nes</H3>
+<P><TT><BR>
+# ceci est un commentaire <BR>
+print 2+2 # on affiche avec &quot;print&quot; <BR>
+print &quot;dro&quot;+'madaire' 
+    # les cha&icirc;nes peuvent &ecirc;tre avec des &quot; ou des ' et on peut les
+    concat&eacute;ner<BR>
+print &quot;a&quot;+2*&quot;na&quot;+&quot;s&quot;
+    # on peut aussi multiplier les cha&icirc;nes<BR>
+print &quot;mignonne allons voir si la rose\netc.&quot; 
+# on peut mettre des \quelquechose<BR>
+print &quot;ceci\test une tabulation, mais pas cela\\t.&quot;
+    # le caract&eacute;re d'&eacute;chappement est \<BR>
+alphabet=&quot;abcdefghijklmnopqrstuvwxyz&quot; # on d&eacute;finit une variable<BR>
+print alphabet # &ccedil;a affiche l'alphabet, pas de surprise<BR>
+print len(alphabet) 
+# &quot;len&quot; c'est pour &quot;length&quot;, c'est-&agrave;-dire &quot;longueur&quot;<BR>
+alphabet.upper() # les cha&icirc;nes ont des m&eacute;thodes commodes<BR>
+print (2**8)%100 # 2 puissance 8, le tout modulo 100 (&ccedil;a fait
+56)<BR>print 1, # notez la virgule &agrave; la fin du print : elle
+permet de ne pas aller &agrave; la ligne<BR>print 1,; print 2 # ...
+cette ligne affichera donc &laquo; 1 2 &raquo;<BR></TT><BR><BR>
+
+<B><I>Exercice 1 </I></B> Soit une variable appel&eacute;e &quot;message&quot; et contenant
+un message de moins de 75<BR>caract&egrave;res. &Eacute;crire un bout
+de programme qui affiche ce message en l'encadrant avec des *.<BR>Par
+exemple si message=&quot;coin coin&quot;, le programme doit afficher
+:<BR><TT>*************<BR>* coin coin *<BR>*************</TT><BR><BR>
+
+<B><I>Exercice 2</I></B> Soit toujours la m&ecirc;me variable ; cette fois-ci on veut que
+le cadre fasse 79<BR>caract&egrave;res de large et que le message
+soit centr&eacute;.<BR>
+Par exemple (on a mis des points pour visualiser 
+la mise en page, mais ils ne doivent pas appara&icirc;tre, bien s&ucirc;r)
+:<BR><TT>*******************************************************************************<BR>*
+. . . . . . . . . . . . . . . . .coin coin. . . . . . . . . . . . . .
+. . .
+*<BR>*******************************************************************************</TT></P>
+
+
+<H3>Le formatage des cha&icirc;nes de caract&egrave;res</H3>
+<P><BR>Pour l'instant, nous avons utilis&eacute; des &quot;+&quot;
+pour concat&eacute;ner les cha&icirc;nes &agrave; afficher. Ce n'est
+pas la meilleure m&eacute;thode.<BR>Pour faire l'&eacute;quivalent
+d'un <TT>printf</TT>, on fait comme ceci :<BR><TT>print &quot;La
+somme de %d et %d, &ccedil;a fait %d, qui est un nombre %s.&quot;%(2,
+40, 2+40, &quot;positif&quot;)</TT><BR>C'est-&agrave;-dire qu'on
+utilise l'op&eacute;rateur modulo (%) qui va prendre &agrave; gauche,
+une cha&icirc;ne avec des %quelquechose, et &agrave; droite, une
+liste d'arguments &agrave; remplacer.</P>
+
+
+
+<H3>Listes (ou  tableaux, c'est pareil)</H3>
+<P><TT><BR>daltons=[&quot;joe&quot;,&quot;jack&quot;,&quot;william&quot;,&quot;averell&quot;]<BR>
+print daltons[0] 
+    # les listes, &ccedil;a commence &agrave; z&eacute;ro<BR>
+print daltons[1:3] 
+    # sous-liste de l'&eacute;l&eacute;ment 1 inclus jusqu'au 3 exclus<BR>
+print daltons[-1] 
+    # -N = N&egrave;me &eacute;l&eacute;ment en partant de la fin<BR>
+print daltons[2:] # sous-liste de l'&eacute;l&eacute;ment 2 jusqu'&agrave; la fin<BR>
+daltons.sort() # tri alphab&eacute;tique en place<BR>
+print daltons # affiche la liste tri&eacute;e<BR>
+petit=daltons[0] # c'est &quot;averell&quot; vu qu'on a tri&eacute; dans l'ordre
+    alphab&eacute;tique<BR>
+print petit[0] # surprise : une cha&icirc;ne, c'est une liste de caract&egrave;res...<BR>
+print daltons[-2][3:] #  on peut faire &ccedil;a<BR>
+</TT>
+<BR><BR>
+<B><I>Exercice 3 </I></B>
+L'inverse de l'exercice 1 : on suppose qu'il existe une variable
+&quot;message&quot;, contenant un message encadr&eacute; d'&eacute;toiles.<BR>
+&Eacute;crire un bout de programme permettant de retrouver le message
+original.<BR>Par exemple, si message=&quot;*&quot;*13+&quot;\n* coin
+coin *\n&quot;+&quot;*&quot;*13, le programme doit afficher &quot;coin
+coin&quot;.<BR>
+Bien s&ucirc;r, il faut que &ccedil;a marche quelle que
+soit la taille du message (pas seulement avec des messages de 9
+caract&egrave;res!).<BR>
+On suppose que le message original est bien
+construit (c'est-&agrave;-dire qu'il n'y a pas d'&eacute;toiles en
+plus ou en moins que ce qu'il faut).</P>
+
+
+<H3>Dictionnaires</H3>
+
+<P STYLE="margin-bottom: 0cm">
+<TT>
+<BR>
+client={  &quot;prenom&quot;:&quot;lazare&quot;,&quot;nom&quot;:&quot;garcin&quot;,
+&quot;date_de_naissance&quot;:[1,4,1515],
+</TT>
+</P>
+<P STYLE="margin-bottom: 0cm">
+<TT>
+&quot;poissons_rouges&quot;:2, 123:&quot;un deux trois&quot;}
+</TT>
+</P>
+<P><TT>
+client[&quot;ville&quot;]=&quot;plessis&quot; # ajoute une cl&eacute;<BR>
+client[&quot;ville&quot;]=&quot;paris&quot; # modifie la valeur<BR>
+encore={'tel':'888-88-888-88', 123:'cent-vingt-trois'} # nouvelles donn&eacute;es<BR>
+client.update(encore) # mise &agrave; jour<BR>
+del client[123] # supprime une valeur<BR>
+print client # affiche la table r&eacute;sultante
+
+
+
+</TT></P>
+
+
+
+
+
+<H3>Les structures de contr&ocirc;le</H3>
+<P STYLE="margin-bottom: 0cm">
+<TT>
+if 5&gt;2: print &quot;5 est plus grand que 2&quot;<BR>else:
+print &quot;5 est plus petit que 2&quot;<BR><BR>
+for nom in daltons: print nom+&quot; est un dalton&quot;<BR><BR>
+<pre>
+print "la famille dalton comprend :"
+for nom in daltons:
+    nom_complet=nom+"dalton"
+    print nom_complet
+</pre>
+# Plus &eacute;l&eacute;gant :<BR>
+<pre>
+print 'La famille Dalton comprend :\n' + '\n'.join([x.capitalize()+ ' Dalton' for x in daltons])
+</pre>
+# Cette derni&egrave;re utilise une compr&eacute;hension de liste,
+comme ce quicksort en deux lignes
+<pre>
+def q(L):
+    if len(L)<= 1: return L
+    return q([x for x in L[1:] if x&#60;L[0]])+[L[0]]+q([y for y in L[1:] if y&#62;=L[0]])
+</pre>
+
+<pre>
+s="abracadabrakangourou"
+t=""
+while s:
+    if s[0]=="k": break
+    t=t+s[0]
+    s=s[1:]
+
+print s
+print t
+</pre>
+</TT>
+On note qu'il n'y a pas d'accolade : c'est l'indentation qui d&eacute;termine les blocs de
+code !<BR><BR>
+
+<B><I> Exercice 4 </I></B> &Eacute;crire un bout de programme qui
+prend deux cha&icirc;nes s1 et s2 et qui les &quot;tricote&quot;
+ensemble, <BR>
+par exemple si s1=&quot;abcdef&quot; et s2=&quot;0123456789&quot;,
+le r&eacute;sultat doit &ecirc;tre <BR>
+&quot;a0b1c2d3e4f56789&quot; (on
+intercale une lettre de la premi&egrave;re, une lettre de la
+deuxi&egrave;me, etc.)<BR><BR>
+
+<B><I> Exercice 5 </I></B> &Eacute;crire un bout de
+programme qui &quot;d&eacute;tricote&quot; une cha&icirc;ne s en
+deux cha&icirc;nes,<BR>
+l'une contenant tous les caract&egrave;res de
+rang pair et l'autre ceux de rangs impairs. <BR>
+Par exemple pour le
+&quot;a0b1c2d3e4f56789&quot; de la question pr&eacute;c&eacute;dente,
+cela donne &quot;abcdef68&quot;<BR>
+pour la premi&egrave;re cha&icirc;ne
+et &quot;01234579&quot; pour la deuxi&egrave;me.</P>
+
+
+<H3>D&eacute;finition de fonctions</H3>
+
+<pre>
+def fib(n):  
+    """Imprime les nombres de Fibonacci inferieurs a n"""
+    a, b = 0, 1
+    while b < n:
+        print b,
+        a, b = b, a+b
+
+fib(2000)
+
+def demande_ok(prompt, essais=4, message="oui ou non, SVP!"):
+    while True:
+        ok = raw_input(prompt)
+        if ok in ['o', 'oui', 'O', 'y', 'yes', 'ouaip']: return True
+        if ok in ['n', 'non', 'N', 'no', 'nope']: return False
+        essais-=1
+        if essais < 0: raise IOError, 'Rien a faire ...'
+        print message	
+
+
+def printf(format, *args):
+    print format % args
+
+printf('Le %s de mon %s ne mange du %s que le %s', 'cheval', 'cousin', 'foin', 'dimanche')
+
+aa=[3,8]
+*aa
+range(*aa)
+
+map(lambda x:x**2, range(10,20))
+sum(_)
+
+
+filter(lambda s:s.startswith('j'),daltons)
+
+
+
+</pre>
+
+
+
+
+
+<B><I>Exercice 6</I></B> On suppose qu'on a la
+liste suivante
+:<BR><TT>daltons=[{&quot;nom&quot;:&quot;joe&quot;,&quot;taille&quot;:140,&quot;caractere&quot;:&quot;teigneux&quot;},</TT></P>
+<P STYLE="margin-bottom: 0cm"><TT>{&quot;nom&quot;:&quot;jack&quot;,&quot;taille&quot;:155,&quot;caractere&quot;:&quot;idiot&quot;},<BR>{&quot;nom&quot;:&quot;william&quot;,&quot;taille&quot;:170,&quot;caractere&quot;:&quot;stupide&quot;},<BR>{&quot;nom&quot;:&quot;averell&quot;,&quot;taille&quot;:185,&quot;caractere&quot;:&quot;abruti&quot;}]</TT></P>
+<P>Ecrire une fonction <TT>compare_taille</TT> qui prenant en
+argument deux daltons (deux tables de hachage, en fait), comparant
+leur attribut &quot;taille&quot;, et renvoyant :<BR>- z&eacute;ro
+s'ils sont de m&ecirc;me taille<BR>- un nombre n&eacute;gatif si le
+premier est plus petit<BR>- un nombre positif si le premier est plus
+grand<BR>Ecrire aussi une fonction <TT>compare_nom</TT> prenant en
+argument deux daltons, comparant leur attribut &quot;nom&quot;, et
+renvoyant :<BR>- z&eacute;ro s'ils sont identiques<BR>- un nombre
+n&eacute;gatif si le premier est <I>avant</I> le second dans l'ordre
+alphab&eacute;tique<BR>- un nombre positif si le premier est <I>apr&egrave;s</I>
+le second dans l'ordre alphab&eacute;tique<BR>Ex&eacute;cuter le code
+suivant pour tester les fonctions :<BR><TT><BR>print
+daltons<BR>daltons.sort(compare_nom)<BR>print
+daltons<BR>daltons.sort(compare_taille)<BR>print daltons<BR></TT><BR><BR>
+</P>
+
+
+<H3>Interlude : comment faire un programme python?</H3>
+<P><BR>Par convention, appeler le fichier <TT>quelquechose.py</TT>
+(ce n'est pas obligatoire, mais c'est comme appeler un source C
+<TT>quelquechose.c</TT>!)<BR>Au d&eacute;but du source, mettre la
+ligne :<BR><TT>#!/usr/bin/python</TT> ou <TT>#!/usr/bin/env python</TT>
+<BR>Puis rendre le fichier
+ex&eacute;cutable (<TT>chmod +x toto.py</TT>) .<BR>On peut maintenant
+lancer le programme : <TT>./toto.py arguments...</TT></P>
+<P> Si les commentaires ou des cha&icirc;nes du programme contiennent
+des caract&egrave;eres non-ascii (<tt>ord(c)>127</tt>), la premi&egrave;re ligne du programme
+doit &ecirc;tre
+<pre>
+# -*- coding: utf-8 -*-
+# ou 
+# -*- coding: iso-8859-15 -*-
+# selon votre encodage
+</pre>
+<P><BR><BR>
+</P>
+
+
+
+<H3>Quelques fonctions utiles</H3>
+
+
+<P><BR>Si on veut transformer un entier en cha&icirc;ne (on l'a fait
+plus haut), on utilise la fonction <TT>str</TT>. Inversement, pour
+transformer une cha&icirc;ne en nombre, on utilise <TT>int</TT> ; par
+exemple : <TT>int(&quot;2&quot;)+int(&quot;40&quot;)</TT> &ccedil;a
+fait <TT>42</TT>.<BR><BR>On a d&eacute;j&agrave; vu que <TT>len</TT>
+renvoie la longueur de l'argument (qu'il s'agisse d'une cha&icirc;ne
+de caract&egrave;res, d'une liste...)</P>
+<P> Essayer aussi <tt>int('f2ae8',16'), int('100110100010',2)</tt></p>
+
+<H3>La biblioth&egrave;que</H3>
+
+
+<P><BR>On va rencontrer en Python une &eacute;criture ressemblant &agrave;
+celle du C ou de java pour l'acc&egrave;s aux champs des structures et unions :
+le point.<BR><BR>Ainsi, lorsqu'on &eacute;crit <TT>maison.chaise</TT>,
+on acc&egrave;de au champ &quot;chaise&quot; de la variable qui
+s'appelle &quot;maison&quot;.<BR><BR>Ces champs peuvent &ecirc;tre
+des fonctions (m&eacute;thodes). 
+On l'a d&eacute;j&agrave; vu plus haut, quand on a
+fait <TT>ma_liste.sort()</TT> par exemple. On a appel&eacute; la
+<I>m&eacute;thode</I> &quot;sort&quot; sur l'objet
+<TT>ma_liste</TT>.<BR><BR>D'autres exemples :<BR><TT><BR>une_chaine=&quot;eviv
+bulgroz&quot;<BR>en_majuscule=une_chaine.upper() # met tout en
+majuscules<BR>print en_majuscule<BR>couleurs_html={&quot;rouge&quot;:&quot;#ff0000&quot;,
+&quot;vert&quot;:&quot;#00ff00&quot;, &quot;bleu&quot;:&quot;#0000ff&quot;,
+&quot;blanc&quot;:&quot;#ffffff&quot;, &quot;noir&quot;:&quot;#000000&quot;}<BR>print
+couleurs_html.keys() # affiche la liste des cl&eacute;s (avant les
+:)<BR>print couleurs_html.values() # affiche la liste des valeurs
+(apr&egrave;s les :)<BR>print couleurs_html.items() # affiche une
+liste avec des couples (cl&eacute;,valeur)<BR>for cle,valeur in
+couleurs_html.items(): print &quot;en html, pour avoir du &quot;+cle+&quot;,
+il faut utiliser
+&quot;+valeur<BR>castors=&quot;riri&amp;fifi&amp;loulou&quot;<BR>liste_castors=castors.split(&quot;&amp;&quot;)
+# cr&eacute;e une liste &agrave; partir d'une cha&icirc;ne, en
+s&eacute;parant avec le(s) caract&egrave;re(s) indiqu&eacute;(s)<BR>print
+liste_castors<BR>print &quot;, &quot;.join(liste_castors) # l'inverse
+: concat&egrave;ne les &eacute;l&eacute;ments d'une liste en les
+recollant avec la cha&icirc;ne indiqu&eacute;e<BR></TT><BR><BR>Enfin,
+il y a un type d'objet particulier : les modules. Il s'agit de
+l'&eacute;quivalent des biblioth&egrave;ques du C.<BR><BR>Pour
+utiliser un module, on fait <TT>import nom_du_module</TT> et cela
+permet ensuite d'appeler des fonctions dans ce module, par exemple
+<TT>nom_du_module.nom_de_la_fonction(parametres...)</TT><BR><BR>La
+documentation de tous les modules de base est disponible sur
+<A HREF="http://doc.python.org/lib/">http://doc.python.org/lib/</A></P>
+<H3>Le module <TT>sys</TT></H3>
+<P><TT><BR>import sys<BR>print sys.argv # il s'agit des arguments du
+programme !<BR>print &quot;J'ai %d arguments, et le premier est
+%s&quot;%(len(sys.argv),sys.argv[1])<BR>sys.stderr.write(&quot;Ceci
+s'affiche sur l'erreur standard. Tapez votre nom, puis ENTREE, puis
+Ctrl+D: &quot;)<BR>nom=sys.stdin.read()<BR>sys.stdout.write(&quot;Bonjour,
+%s!\n&quot;%nom)<BR># NB: sys.stdout.write et print, c'est presque
+pareil (au \n pr&egrave;s!)<BR></TT><BR><BR>
+</P>
+<H3>Manipulation de fichiers</H3>
+<P><TT><BR>f=open(&quot;toto&quot;) # ouverture en
+lecture<BR>donnees=f.read(10) # lit 10
+octets<BR>encore_des_donnees=f.read() # lit autant d'octets que
+possible (tout le fichier)<BR>f.close() # referme
+<BR><BR>ff=open(&quot;titi&quot;,&quot;w+&quot;) # le 2&egrave;
+argument est le mode, exactement comme pour la fonction C
+fopen<BR>ff.write(&quot;bonjour, monde!\n&quot;)<BR>ff.close()</TT></P>
+
+
+<H3>Pour finir...</H3>
+<P STYLE="margin-bottom: 0cm"><BR>On veut &eacute;crire un programme
+<TT>dico.py</TT> qui va prendre comme arguments :<BR>- un nom de
+fichier contenant un dictionnaire (le dictionnaire sera simplement
+une liste de mots, avec un mot par ligne ; comme ceux qu'on trouve
+dans <TT>/usr/share/dict</TT>)<BR>- un ou plusieurs mots<BR>Pour
+chaque mot list&eacute; sur la ligne de commande, il faudra afficher
+s'il appartient au dictionnaire, <I>ou pas</I>.<BR><BR>Exemple
+:<BR><TT><BR>[~$] ./dico.py /usr/share/dict/french
+luke je suis ton p&egrave;re<BR>luke n'est pas dans le
+dictionnaire.<BR>je est dans le dictionnaire.<BR>suis est dans le
+dictionnaire.<BR>ton est dans le dictionnaire.<BR>p&egrave;re est
+dans le dictionnaire.<BR>[~$] <BR></TT>
+Si besoin est, il y a un dictionnaire <a
+		href="liste.de.mots.francais.frgut.txt">ici</a>.
+
+Ce dictionnaire est cod&eacute; en ISO-8859, alors que votre syst&egrave;me
+est probablement en UTF-8. Tester avec des mots
+accentu&eacute;s comme <TT>d&eacute;j&agrave;</TT>. Que faut-il faire ?
+
+<BR><BR>
+</P>
+</BODY>
+</HTML>

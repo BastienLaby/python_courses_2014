@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="LibreOffice 3.5  (Linux)">
+	<META NAME="CREATED" CONTENT="0;0">
+	<META NAME="CHANGED" CONTENT="20140105;22313600">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin: 2cm }
+		H1 { margin-bottom: 0.21cm }
+		H1.western { font-family: "Liberation Sans", sans-serif; font-size: 16pt }
+		H1.cjk { font-family: "AR PL UMing CN"; font-size: 16pt }
+		H1.ctl { font-family: "FreeSans"; font-size: 16pt }
+		P { margin-bottom: 0.21cm }
+		PRE.cjk { font-family: "AR PL UMing CN", monospace }
+		PRE.ctl { font-family: "FreeSans", monospace }
+		H3 { margin-bottom: 0.21cm }
+		H3.western { font-family: "Liberation Sans", sans-serif }
+		H3.cjk { font-family: "AR PL UMing CN" }
+		H3.ctl { font-family: "FreeSans" }
+		A:link { so-language: zxx }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="fr-FR" DIR="LTR">
+<H1 CLASS="western"><FONT SIZE=5 STYLE="font-size: 20pt">Python –
+TD5</FONT></H1>
+<H1 CLASS="western"><FONT SIZE=5>http, HTML, expressions régulières
+et itertools</FONT></H1>
+<P><BR><BR>
+</P>
+<H3 CLASS="western">Exercice 1 
+</H3>
+<P>Écrire un script qui prend comme paramètre une url et télécharge
+dans le répertoire courant toutes les images contenues dans la page.</P>
+<P>On utilisera <FONT FACE="Nimbus Mono L, monospace">urllib</FONT>
+pour récupérer le code html, une classe dérivée de <FONT FACE="Nimbus Mono L, monospace">HTMLParser</FONT>
+pour récupérer les attributs <FONT FACE="Nimbus Mono L, monospace">src</FONT>
+de toutes les balises <FONT FACE="Nimbus Mono L, monospace">img</FONT>,
+et le module <FONT FACE="Nimbus Mono L, monospace">urlparse</FONT>
+pour construire l'url de téléchargement de chaque image.</P>
+<P>Comme des images provenant de sites différents peuvent avoir le
+même nom, on utilisera le module <FONT FACE="Nimbus Mono L, monospace">time</FONT>
+pour préfixer au nom du fichier la date et l'heure du
+téléchargement. Le résultat pourra ressembler à ceci :</P>
+<PRE CLASS="western">$ dnld-imgs http://www-igm.univ-mlv.fr/~jyt/
+$ ls -l
+-rw-r--r-- 1 jyt adm    130 janv.  5 16:10 2014-01-05_16-10-14_barre.gif
+-rw-r--r-- 1 jyt adm   1587 janv.  5 16:10 2014-01-05_16-10-14_iuf.gif
+-rw-r--r-- 1 jyt adm   2344 janv.  5 16:10 2014-01-05_16-10-14_logoCNRS.jpg
+-rw-r--r-- 1 jyt adm   4153 janv.  5 16:10 2014-01-05_16-10-14_logoigm.gif
+-rw-r--r-- 1 jyt adm    553 janv.  5 16:10 2014-01-05_16-10-14_mail.gif
+-rw-r--r-- 1 jyt adm  13462 janv.  5 16:10 2014-01-05_16-10-14_thibon.gif
+-rw-r--r-- 1 jyt adm   4554 janv.  5 16:10 2014-01-05_16-10-14_titre-petit.jpg
+-rw-r--r-- 1 jyt adm   3196 janv.  5 16:10 2014-01-05_16-10-15_scholar_sm.gif</PRE><P>
+On pourra ensuite ajouter des options <I>ad libitum, </I><SPAN STYLE="font-variant: normal"><SPAN STYLE="font-style: normal">par
+exemple un répertoire de téléchargement, un préfixe autre que la
+date et l'heure, etc.</SPAN></SPAN></P>
+<H3 CLASS="western">Exercice 2</H3>
+<P>La première étape de la construction d'un correcteur
+orthographique consiste à écrire une fonction qui vérifie si un
+mot est dans le dictionnaire (cf. TD1). La seconde consiste à
+proposer des corrections pour les mots qui n'y sont pas.</P>
+<P>Deux mots u et v sont dits <I>à distance d'édition 1 </I><SPAN STYLE="font-variant: normal"><SPAN STYLE="font-style: normal">s'ils
+diffèrent par remplacement, insertion ou suppression d'un caractère.</SPAN></SPAN></P>
+<P><SPAN STYLE="font-variant: normal"><SPAN STYLE="font-style: normal">Ecrire
+une fonction </SPAN></SPAN><SPAN STYLE="font-variant: normal"><FONT FACE="Nimbus Mono L, monospace"><SPAN STYLE="font-style: normal">lookup(w)
+</SPAN></FONT></SPAN><SPAN STYLE="font-variant: normal"><SPAN STYLE="font-style: normal">qui
+prend comme argument un mot arbitraire w et retourne la liste des
+mots du dictionnaire qui sont à distance 1 (ou 0) de w. On utilisera
+une expression régulière judicieusement construite. On pourra
+reprendre le <A HREF="http://liste.de.mots.francais.frgut.txt/">dictionnaire
+du TD1</A>.</SPAN></SPAN></P>
+<P STYLE="font-variant: normal; font-style: normal">Par exemple, on
+devrait avoir</P>
+<PRE CLASS="western" STYLE="font-variant: normal; font-style: normal">&gt;&gt;&gt; for x in lookup('ais'): print x.decode('latin1'),
+... 
+agis ai aie aies ail ails air airs ais aïs aise aisé aisy ait amis anis ans
+apis ars as avis axis bais bis dais dis fais fis gais gis hais jais lais lis
+mais mis nais ois pais pis rais ris sais sis tais vais vis
+&gt;&gt;&gt; </PRE><H3 CLASS="western" STYLE="font-variant: normal; font-style: normal">
+Exercice 3</H3>
+<P>L'objet de l'exercice est de résoudre par la force brute, en un
+minimum de lignes de code, quelques puzzles classiquement utilisés
+comme exercices de programmation. On utilisera le module itertools. 
+</P>
+<P><FONT FACE="Liberation Sans, sans-serif"><B>1. Le problème des 8
+reines</B></FONT></P>
+<P>Le problème consiste à placer 8 reines sur un échiquer sans que
+deux d'entre elles s'attaquent mutuellement. Il s'agit donc de les
+placer sur un carré 8×8 de maniière à ce qu'il n'y en ait pas
+deux dans une même ligne, colonne ou diagonale. La condition sur les
+lignes et les colonnes signifie que pour un placement correct, les
+numéros de colonne forment une permutation <I>p </I><SPAN STYLE="font-variant: normal"><SPAN STYLE="font-style: normal">de
+ceux des lignes. Les diagonales sont définies par </SPAN></SPAN><I>i+j=constante
+</I><SPAN STYLE="font-variant: normal"><SPAN STYLE="font-style: normal">et
+</SPAN></SPAN><I>i-j=constante</I><SPAN STYLE="font-variant: normal"><SPAN STYLE="font-style: normal">.
+On sélectionnera donc les permutations </SPAN></SPAN><I>p</I><SPAN STYLE="font-variant: normal">
+</SPAN><SPAN STYLE="font-variant: normal"><SPAN STYLE="font-style: normal">telles
+que les ensembles {</SPAN></SPAN><I>i+p(i)</I><SPAN STYLE="font-variant: normal"><SPAN STYLE="font-style: normal">}
+et {</SPAN></SPAN><I>i-p(i)</I><SPAN STYLE="font-variant: normal"><SPAN STYLE="font-style: normal">}
+soient tous deux de cardinal 8. La généralisation à un échiquier
+</SPAN></SPAN><I>n×n </I><SPAN STYLE="font-variant: normal"><SPAN STYLE="font-style: normal">est
+immédiate. Jusqu'à quelle valeur de </SPAN></SPAN><I>n</I><SPAN STYLE="font-variant: normal">
+</SPAN><SPAN STYLE="font-variant: normal"><SPAN STYLE="font-style: normal">le
+programme répond-il en un temps acceptable&nbsp;? </SPAN></SPAN>
+</P>
+<P><FONT FACE="Liberation Sans, sans-serif"><B>2. Les cryptarithmes</B></FONT></P>
+<P>Un cryptarithme est une équation du type 
+</P>
+<P>SEND + MORE = MONEY (le premier du genre)</P>
+<P>ou encore</P>
+<P>MARS + SATURNE + NEPTUNE = PLANETES</P>
+<P>Le jeu consiste à remplacer chaque lettre par un chiffre
+différent (entre 0 et 9) de manière à ce que l'équation soit
+vérifiée. Pour le premier exemple, la seule solution est 9567 +
+1085 = 10652, et pour le second, c'est 8724 + 4765290 + 9016590 =
+13790604.</P>
+<P>Ecrire un solveur de cryptarithmes (une dizaine de lignes pour la
+fonction solve).On pourra lui passer un argument du type SEND + MORE
+== MONEY pour lui éviter une substitution et permettre d'utiliser
+directement la fonction eval après substitution des chiffres aux
+lettres. L'équation poura contenir n'importe quelle expression
+arithmétique, par exemple SIX * CINQ == TRENTE ou 3*MOT == TOM-1.</P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+</BODY>
+</HTML>

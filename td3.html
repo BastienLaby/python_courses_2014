@@ -1,0 +1,57 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+
+<head>
+<title>Python TD3</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+
+
+<body>
+
+		<H1>Python TD3</H1><br />
+		<H2>Utilisation des modules <tt>os</tt> et <tt>os.path</tt></H2>
+
+		<hr />
+		<br />
+		<b><i>Exercice 1</i></b><br /><br />
+
+1. Écrire un programme qui fait la liste des fichiers (pas les répertoires!) présents dans le compte de l'utilisateur (répertoire et sous-répertoires).<br />
+(Et qui affiche la liste, avec un nom par ligne ; exactement comme la commande <tt>find ~</tt>)<br />
+<br />
+2. Indiquer le nombre de fichiers et le nombre de répertoires.<br />
+(Comme si on exécutait la commande <tt>find ~ -type f | wc -l ; find ~ -type d | wc -l</tt>)<br />
+<br />
+3. Indiquer le nombre de fichiers, le nombre de répertoires, et le nombre de liens symboliques.<br />
+(Si il y a un lien <tt>toto</tt> qui pointe vers le répertoire <tt>truc</tt>, alors <tt>toto</tt> compte uniquement comme un lien symbolique -- pas comme un répertoire ; et il ne faut pas descendre dans ses sous-répertoires.)<br />
+<br />
+4. Indiquer les mêmes nombres, mais en différenciant les éléments « publics » et les éléments « privés ». Un fichier est considéré comme « privé » si le groupe propriétaire et les autres utilisateurs n'ont aucun droit dessus ; sinon il est public.<br />
+<br />
+Rappel : pour consulter les informations (taille, droits...) d'un fichier : <tt><br />
+struct_stat=os.stat(chemin_du_fichier)<br />
+print struct_stat.st_size<br />
+print struct_stat.st_mode<br />
+</tt><br />
+Pour vérifier qu'on est propriétaire d'un fichier : utiliser le champ <tt>st_uid</tt> et la fonction <tt>os.getuid</tt>.<br />
+<br />
+
+</div>
+
+		<hr />
+		<br />
+		<b><i>Exercice 2</i></b><br /><br /> Il arrive souvent qu'un même fichier se retrouve présent avec des noms différents
+à divers emplacements. On peut, par exemple, avoir téléchargé plusieurs fois un même mp3 ou un document pdf, depuis des sites différents
+qui l'auront nommé différemment, et placé dans différents sous-répertoires.
+<br />
+Il peut être coûteux de comparer deux à deux de gros fichiers binaires, mais une fonction de hachage comme <tt>md5</tt> ou <tt>sha1</tt>
+permet de détecter les fichiers identiques avec une quasi-certitude (module <tt>hashlib</tt>).
+<br />
+On demande d'écrire un script <tt>duplicates</tt> qui prend comme paramètres optionnels
+une extension de nom  de fichier (<tt> -e, --extension</tt>, defaut : <tt>None</tt>)
+un répertoire (<tt> -d, --directory</tt>, défaut : répertoire courant)
+et un fichier de sortie (<tt>-o, --output</tt>, défaut : sortie standard), et renvoie les chemins complets vers les groupes de fichiers identiques,
+une ligne par fichier, et une ligne vide entre chaque groupe.
+
+</body>
+</html>

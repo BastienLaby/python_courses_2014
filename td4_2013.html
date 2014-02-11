@@ -1,0 +1,117 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+
+<head>
+<title>Python TD4</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+<body>
+
+	<H1>Python TD4</H1>
+	<H2>Python et les services web</H2>
+
+
+		<hr />
+		<br />
+		Les services web  sont des programmes permettant la communication et l'échange de données entre applications 
+		et systèmes hétérogènes dans des environnements distribués.
+		<br />
+		
+		Les services web de type WS-* exposent des services exécutables à distance (Remote Procedure Call). 
+		Leurs spécifications reposent sur les standards SOAP et WSDL.
+		<br />
+		Les services web de type Representational state transfer (REST) exposent entièrement ces fonctionnalités comme un ensemble 
+		de ressources (URI) accessibles par le protocole HTTP. REST n'est pas un standard,
+		mais un style d'architecture. 
+		<br /> La distribution standard de Python fournit des modules pour le protocole xmlrpc, et un standard, WSGI
+	       	(Web Server Gateway Interface), une interface entre  serveurs web et  applications écrites en Python.
+		<br />
+<br />
+<hr />
+<br />
+<b><i>Exercice 1</i></b>
+
+<br/>
+Lorsque le protocole <tt>SOAP</tt> a été introduit, il existait
+un serveur 
+destiné à tester les clients.
+<br/>
+Il renvoyait des injures aléatoires puisées dans le répertoire du capitaine Haddock (en anglais).
+<br />
+Cette institution ayant  disparu, nous
+avons installé (provisoirement) un service similaire
+sur le serveur de l'IGM,
+<br />
+<tt> http://monge.univ-mlv.fr:8888 </tt>
+<br />
+Pour n'utiliser que les ressources
+natives de Python, nous avons employé
+le protocole <a href="http://www.xmlrpc.com/">xmlrpc</a> (qui est l'ancêtre
+de SOAP)
+de sorte que l'accès au serveur ne nécéssitera
+que deux ou trois lignes de Python, l'une d'entre elles consistant à importer
+une classe du module 
+<a href="http://docs.python.org/lib/module-xmlrpclib.html">xmlrpclib</a>. 
+<br/>
+0) Parcourir rapidement la documentation du module <tt> xmlrpclib</tt>.
+<br />
+1) Le serveur accepte l'introspection.  Découvrir ses méthodes,
+et les essayer.
+<br />
+2) Ecrire un serveur identique et le lancer sur "localhost" (voir la documentation de
+<a href="http://docs.python.org/2/library/simplexmlrpcserver.html#module-SimpleXMLRPCServer">SimpleXMLRPCServer</a>).
+<br />
+<br />
+<hr />
+
+
+<br/>
+<b><i>Exercice 2</i></b>
+<br />
+Bien que le protocole xmlrpc soit assez primitif, il est suffisant pour de petites
+applications, et il existe encore de nombreux serveurs, par exemple 
+<a href="https://wiki.python.org/moin/PyPIXmlRpc">celui de PyPi</a> (Python Package Index).
+<br />
+1) Lancer l'interpréteur Python, et essayer les commandes de l'exemple donné sur la page web. Essayer aussi <tt>listMethods</tt>
+et comparer avec la liste donnée sur la page. 
+<br />Ne pas essayer <tt> list_packages()</tt>.
+<br /> 2) Toujours <i>depuis l'interpréteur Python</i>, rechercher un paquetage lié à la plateforme (framework)
+Flask permettant d'écrire facilement un serveur de type REST. 
+<br />On utilisera pour cela la
+méthode <tt> browse</tt>, les <tt> trove classifier strings</tt> sont <a href="trove_classifiers.txt">ici</a>.
+<br />On fera d'abord imprimer les noms des paquetages trouvés avec leur champ <tt>summary</tt>, puis le
+champ <tt>description</tt> du paquetage sélectionné.
+
+
+<br />
+<br />
+<hr />
+
+<br />
+
+<b><i>Exercice 3</i></b><br /> 
+Récuperer le paquetage
+<a href="http://code.google.com/p/restlite/">restlite</a>. Il ne nécessite pas d'installation,
+et son code tient dans un seul fichier de taille modeste <tt>restlite.py</tt>. Il s'appuie sur
+le module (complexe)
+<a href="http://docs.python.org/2/library/wsgiref.html#module-wsgiref">wsgiref</a> de Python.
+<br />Le fichier <tt>example.py</tt> montre les diverses possibilités.
+<br /> Écrire un serveur d'injures du capitaine Haddock sur ce modèle. 
+<br /> 1) On devra pouvoir
+obtenir une injure en tapant
+<br/><tt>curl http://127.0.0.1:8888/juron</tt> ou depuis Python avec <tt>urllib.urlopen</tt>.
+<br />2) On remarque que, contrairement au serveur xmlrpc, on obtient quelque chose en accédant
+à l'url ci-dessus avec un navigateur. Profiter de cette circonstance pour implémenter une
+méthode renvoyant une liste de <it>n</it> jurons sous forme d'une page html convenablement
+formatée lorsqu'on consulte l'url
+<tt>http://127.0.0.1:8888/jurons?nombre=42</tt>.
+<br />3) Imaginez des fonctionalités supplémentaires, et implémentez les
+avec la syntaxe simplifiée utilisant le décorateur <tt>@restlite.resource</tt>.
+<br /> exemple : <a href="http://monge.univ-mlv.fr:8889">http://monge.univ-mlv.fr:8889</a>
+<br />
+<hr />
+</body>
+</html>

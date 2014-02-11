@@ -1,0 +1,91 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+
+<head>
+<title>Python TD2</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+
+
+<body>
+
+	<H1>Python TD2</H1>
+	<br />
+	<H2>Chaînes de caractères, expressions régulières </H2>
+
+<hr />
+<br />
+<b><i>Exercice 1</i></b> Quelques <i>one-liners</i> pour s'échauffer. Le but
+de l'exercice est d'explorer la documentation pour trouver le moyen de coder
+ces fonctions en une ligne.
+<br /
+>a)  Ecrire une fonction <tt>is_palindrome</tt> qui reconnaît si un mot est un palindrome.
+<br />
+b) Ecrire une fonction <tt>is_pangram</tt> qui reconnaît si une phrase (sans lettres accentuées,
+par exemple en anglais)
+est un <i>pangramme</i>, c'est à dire, contient au moins une fois chaque lettre de l'alphabet
+(exemples : <i>The quick brown fox jumps over the lazy dog, Portez ce vieux whisky au juge blond qui fume</i>.
+<br />
+c) Ecrire une fonction <tt>remove_adjacent</tt> qui prend en argument une liste et 
+élimine les répétitions <i>consécutives</i> d'un même élément,  par exemple pour
+<tt>[1,2,2,3,3,1]</tt> on doit obtenir <tt>[1,2,3,1]</tt>.
+<br />
+d) Ecrire une fonction <tt>digits_sum</tt> qui prend comme argument un entier et renvoie 
+la somme de ses chiffres.
+
+<hr />
+<br />
+<b><i>Exercice 2</i></b> Les lycéens aiment bien occuper leurs cours de maths en cherchant des
+messages qui peuvent s'écrire en lisant à l'envers l'afficheur 7 segments de la calculatrice,
+comme par exemple
+<br /><br />
+<img src='illisible.png'/>	ou encore <img src='hobbies.png'/>, ou même <img src='debile.png'>
+
+<br />
+obtenus respectivement en écrivant 378151771 et 5318804.
+<br />
+Pour leur faciliter la tâche, écrivez un  programme qui prend en entrée un dictionnaire comme
+<a href="liste.de.mots.francais.frgut.txt">celui-ci</a> (ou un autre de votre choix, mais
+le format et l'encodage ne seront pas forcément les mêmes), et qui produit la liste
+des mots qui peuvent s'écrire ainsi. On pourra utiliser
+<br/>
+1=I, 2=Z, 3=E, 4=h, 5=S, (6=g), 7=L, 8=B, 9=G, 0=D ou O.
+<br />
+<img src='digits.png'> se retourne en <img src='stigid.png'>
+
+
+		<hr />
+		<br />
+<b><i>Exercice 3</i></b>
+Il pîaart que puor la lctreue, l'orrde des lrttees à l'iétunreir des mots n'a acnuue itnpocmare. <br />
+La sulee chose qui cptmoe est que la pemièrre et la dneèirre lttree seonit à leur pclae.<br />
+<br />
+Écrire un programme permettant de tester cette théorie.<br/>
+Il devra prendre en
+entrée un fichier "texte" (disons, pour commencer, du français en ASCII étendu 'latin-1' ou en 'utf-8')<br/> 
+et mélanger aléatoirement les
+lettres à l'intérieur des mots <i>en respectant la ponctuation et la mise en page</i>.<br/>
+Une fois le programme fonctionnel, on étudiera la possibilité de traiter des
+fichiers utilisant des encodages de caractères différents.
+<br />
+
+Par exemple, le fichier <a href='harmonie.txt'>harmonie.txt</a> devra donner
+quelque chose comme <a href='himornae.txt'>ceci</a>.<br  >
+
+Tester votre programme sur un fichier plus gros, comme
+<a href="13951-8.txt">celui-ci</a>. 
+<br/>
+Que faudrait-il faire pour brouiller de la même manière une page html en conservant sa mise en page ?<br/>
+<br />
+<br />
+<hr />
+<br/>
+
+
+
+
+
+
+</body>
+</html>
